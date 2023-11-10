@@ -17,5 +17,7 @@ struct TextInput: View {
             .padding()
             .foregroundColor(.black)
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
     }
 }

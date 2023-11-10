@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var isSubmitted: Bool = false
+    @State private var showAlert: Bool = false
     @State private var login: String = ""
     
     var body: some View {
@@ -28,15 +29,20 @@ struct SearchView: View {
                             .padding([.bottom], 50)
                         TextInput(text: $login, placeholder: "Login")
                         LargeButton(title: "Search", iconName: "magnifyingglass", action: {
-                            print(login)
-                            isSubmitted.toggle()
-                            
+                            if (login.isEmpty) {
+                                showAlert.toggle()
+                            } else {
+                                isSubmitted.toggle()
+                            }
                         })
                         .navigationDestination(
                             isPresented: $isSubmitted
                         ) {
-                            UserDetailsView()
+                            UserDetailsView(login: login)
                         }
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("An error occurred"), message: Text("You need to enter a login to display the user information"), dismissButton: .default(Text("OK")))
                     }
                 }
                 .padding(.horizontal)

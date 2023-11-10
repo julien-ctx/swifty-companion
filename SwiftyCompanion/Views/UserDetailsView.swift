@@ -9,7 +9,16 @@ import Foundation
 import SwiftUI
 
 struct UserDetailsView: View {
+    @State var isLoading: Bool = true
+    let login: String
+    
     var body: some View {
-        Text("Here are User details")
+        if (isLoading) {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+                .scaleEffect(2)
+        } else {
+            Text(login)
+        }
     }
 }
