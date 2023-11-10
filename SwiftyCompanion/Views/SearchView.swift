@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var isSubmitted: Bool = false
+    @State private var login: String = ""
     
     var body: some View {
         NavigationStack {
@@ -25,31 +26,20 @@ struct SearchView: View {
                             .resizable()
                             .frame(width: 100, height: 70)
                             .padding([.bottom], 50)
-                        Button {
-                            self.isSubmitted.toggle()
-                        } label: {
-                            HStack {
-                                Text("Search")
-                                    .textCase(.uppercase)
-                                    .font(.system(size: 22, weight: .semibold, design: .default))
-                                    .frame(maxWidth: .infinity)
-                                Image(systemName: "magnifyingglass")
-                                    .font(.system(size: 22, weight: .semibold))
-                            }
-                            .padding()
-                            .foregroundStyle(.white)
-                            .background(Color.accentColor)
-                            .cornerRadius(10)
-                        }
+                        TextInput(text: $login, placeholder: "Login")
+                        LargeButton(title: "Search", iconName: "magnifyingglass", action: {
+                            print(login)
+                            isSubmitted.toggle()
+                            
+                        })
                         .navigationDestination(
-                            isPresented: $isSubmitted) {
-                                UserDetailsView()
-                            }
-                        
+                            isPresented: $isSubmitted
+                        ) {
+                            UserDetailsView()
+                        }
                     }
                 }
                 .padding(.horizontal)
-                
             }
         }
     }

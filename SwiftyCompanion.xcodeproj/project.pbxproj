@@ -16,6 +16,8 @@
 		B73DA1102AFCEA0B0013B6E7 /* SwiftyCompanionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA10F2AFCEA0B0013B6E7 /* SwiftyCompanionUITestsLaunchTests.swift */; };
 		B73DA11E2AFE659A0013B6E7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA11D2AFE659A0013B6E7 /* SearchView.swift */; };
 		B73DA1202AFE65A70013B6E7 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA11F2AFE65A70013B6E7 /* UserDetailsView.swift */; };
+		B73DA1232AFE82C70013B6E7 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA1222AFE82C70013B6E7 /* LargeButton.swift */; };
+		B73DA1252AFE927C0013B6E7 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA1242AFE927C0013B6E7 /* TextInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		B73DA10F2AFCEA0B0013B6E7 /* SwiftyCompanionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyCompanionUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B73DA11D2AFE659A0013B6E7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		B73DA11F2AFE65A70013B6E7 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
+		B73DA1222AFE82C70013B6E7 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
+		B73DA1242AFE927C0013B6E7 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 		B73DA0F12AFCEA0A0013B6E7 /* SwiftyCompanion */ = {
 			isa = PBXGroup;
 			children = (
+				B73DA1212AFE82970013B6E7 /* Components */,
 				B73DA0F22AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift */,
 				B73DA0F42AFCEA0A0013B6E7 /* ContentView.swift */,
 				B73DA11C2AFE657F0013B6E7 /* Views */,
@@ -139,6 +144,15 @@
 				B73DA11F2AFE65A70013B6E7 /* UserDetailsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B73DA1212AFE82970013B6E7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B73DA1222AFE82C70013B6E7 /* LargeButton.swift */,
+				B73DA1242AFE927C0013B6E7 /* TextInput.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,10 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73DA1232AFE82C70013B6E7 /* LargeButton.swift in Sources */,
 				B73DA1202AFE65A70013B6E7 /* UserDetailsView.swift in Sources */,
 				B73DA0F52AFCEA0A0013B6E7 /* ContentView.swift in Sources */,
 				B73DA11E2AFE659A0013B6E7 /* SearchView.swift in Sources */,
 				B73DA0F32AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift in Sources */,
+				B73DA1252AFE927C0013B6E7 /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
