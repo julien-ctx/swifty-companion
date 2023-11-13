@@ -12,7 +12,7 @@ struct TextInput: View {
     var placeholder: String
     
     var body: some View {
-        TextField("", text: $text, prompt: Text("Placeholder").foregroundColor(Color.gray))
+        TextField("", text: $text, prompt: Text(placeholder).foregroundColor(Color.gray))
             .font(.system(size: 22, weight: .semibold, design: .default))
             .padding()
             .foregroundColor(.black)

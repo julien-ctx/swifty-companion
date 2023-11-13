@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B70AFA932B022D2A00DED102 /* NetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70AFA922B022D2A00DED102 /* NetworkContext.swift */; };
+		B70AFA952B024E2500DED102 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = B70AFA942B024E2500DED102 /* .env */; };
+		B70AFA982B025A0F00DED102 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70AFA972B025A0F00DED102 /* User.swift */; };
+		B70AFA9C2B02660C00DED102 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70AFA9B2B02660C00DED102 /* Token.swift */; };
 		B73DA0F32AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA0F22AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift */; };
 		B73DA0F52AFCEA0A0013B6E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA0F42AFCEA0A0013B6E7 /* ContentView.swift */; };
 		B73DA0F72AFCEA0B0013B6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73DA0F62AFCEA0B0013B6E7 /* Assets.xcassets */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B70AFA922B022D2A00DED102 /* NetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkContext.swift; sourceTree = "<group>"; };
+		B70AFA942B024E2500DED102 /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
+		B70AFA972B025A0F00DED102 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B70AFA9B2B02660C00DED102 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		B73DA0EF2AFCEA0A0013B6E7 /* SwiftyCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73DA0F22AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyCompanionApp.swift; sourceTree = "<group>"; };
 		B73DA0F42AFCEA0A0013B6E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,9 +87,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B70AFA912B0222E400DED102 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B70AFA962B0259FF00DED102 /* Models */,
+				B70AFA922B022D2A00DED102 /* NetworkContext.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B70AFA962B0259FF00DED102 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B70AFA972B025A0F00DED102 /* User.swift */,
+				B70AFA9B2B02660C00DED102 /* Token.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B73DA0E62AFCEA0A0013B6E7 = {
 			isa = PBXGroup;
 			children = (
+				B70AFA942B024E2500DED102 /* .env */,
 				B73DA0F12AFCEA0A0013B6E7 /* SwiftyCompanion */,
 				B73DA1022AFCEA0B0013B6E7 /* SwiftyCompanionTests */,
 				B73DA10C2AFCEA0B0013B6E7 /* SwiftyCompanionUITests */,
@@ -105,6 +132,7 @@
 				B73DA1212AFE82970013B6E7 /* Components */,
 				B73DA0F22AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift */,
 				B73DA0F42AFCEA0A0013B6E7 /* ContentView.swift */,
+				B70AFA912B0222E400DED102 /* Network */,
 				B73DA11C2AFE657F0013B6E7 /* Views */,
 				B73DA0F62AFCEA0B0013B6E7 /* Assets.xcassets */,
 				B73DA0F82AFCEA0B0013B6E7 /* Preview Content */,
@@ -259,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B70AFA952B024E2500DED102 /* .env in Resources */,
 				B73DA0FA2AFCEA0B0013B6E7 /* Preview Assets.xcassets in Resources */,
 				B73DA0F72AFCEA0B0013B6E7 /* Assets.xcassets in Resources */,
 			);
@@ -286,10 +315,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B73DA1232AFE82C70013B6E7 /* LargeButton.swift in Sources */,
+				B70AFA9C2B02660C00DED102 /* Token.swift in Sources */,
 				B73DA1202AFE65A70013B6E7 /* UserDetailsView.swift in Sources */,
 				B73DA0F52AFCEA0A0013B6E7 /* ContentView.swift in Sources */,
 				B73DA11E2AFE659A0013B6E7 /* SearchView.swift in Sources */,
+				B70AFA982B025A0F00DED102 /* User.swift in Sources */,
 				B73DA0F32AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift in Sources */,
+				B70AFA932B022D2A00DED102 /* NetworkContext.swift in Sources */,
 				B73DA1252AFE927C0013B6E7 /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

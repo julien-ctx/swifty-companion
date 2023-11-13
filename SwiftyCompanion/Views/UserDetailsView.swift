@@ -11,7 +11,7 @@ import SwiftUI
 struct UserDetailsView: View {
     @State var isLoading: Bool = true
     let login: String
-    
+
     var body: some View {
         if (isLoading) {
             ProgressView()
@@ -19,6 +19,9 @@ struct UserDetailsView: View {
                 .scaleEffect(2)
         } else {
             Text(login)
+        }
+        if let apiUrl = NetworkContext.env.apiUrl {
+            Text("test")
         }
     }
 }
