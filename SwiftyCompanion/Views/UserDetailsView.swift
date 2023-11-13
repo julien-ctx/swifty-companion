@@ -12,12 +12,6 @@ struct UserDetailsView: View {
     @State var isLoading: Bool = true
     let login: String
     
-    func getApiUrl() {
-        if let apiUrl = NetworkContext.shared.apiUrl {
-            print("Yes")
-        }
-    }
-    
     var body: some View {
         Group {
             if isLoading {
@@ -28,6 +22,9 @@ struct UserDetailsView: View {
                 Text(login)
             }
         }
-        .onAppear(perform: getApiUrl)
+        .onAppear {
+            NetworkContext.shared.getUserInformation(login: login)
+        }
+
     }
 }

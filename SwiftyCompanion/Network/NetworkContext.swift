@@ -16,7 +16,6 @@ class NetworkContext {
     
     var accessToken: String?
     var expirationTime: Int?
-    var buffer: Int = 180
     
     private init() {
         getEnvironmentVariables()
@@ -53,9 +52,17 @@ class NetworkContext {
         }
     }
     
-    func getAccessToken(){
+    private func checkTokenExpirationTime() {
+        if let expirationTime = self.expirationTime {
+            if expirationTime <= Int(Date().timeIntervalSince1970) {
+                getAccessToken()
+            }
+        }
+    }
+    
+    private func getAccessToken(){
         if let apiUrl = self.apiUrl, let clientId = self.clientId, let clientSecret = self.clientSecret {
-            guard let url = URL(string: "\(apiUrl)/oauth/token") else {
+            guard let url = URL(string: "\(apiUrl)oauth/token") else {
                 print("Error while creating the URL to get the access token")
                 return
             }
@@ -81,11 +88,50 @@ class NetworkContext {
                         return
                     }
                     self.accessToken = decodedResponse.accessToken
-                    self.expirationTime = Int(decodedResponse.expiresIn) + Int(Date().timeIntervalSince1970)
+                    self.expirationTime = Int(decodedResponse.expiresIn) + Int(decodedResponse.createdAt)
                 }
             }
             
             task.resume()
+        }
+    }
+    
+    func getUserInformation(login: String) {
+        checkTokenExpirationTime()
+        if let apiUrl = self.apiUrl, let accessToken = self.accessToken {
+            guard let url = URL(string: "\(apiUrl)users/\(login)") else {
+                print("Error while creating the URL to get the access token")
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            print(accessToken)
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let httpError = error {
+                    print("Error making request to get access token: \(httpError)")
+                    return
+                }
+                guard let httpResponse = response as? HTTPURLResponse,
+                      (200...299).contains(httpResponse.statusCode) else {
+                    print("Invalid response from server when getting access token")
+                    return
+                }
+                if let responseData = data {
+                    guard let decodedResponse = try? JSONDecoder().decode(User.self, from: responseData) else {
+                        print("Error while decoding")
+                        return
+                    }
+                    print(decodedResponse.firstName)
+                    print(decodedResponse.lastName)
+                }
+            }
+            
+            task.resume()
+        } else {
+            print("No access token")
         }
     }
 }
