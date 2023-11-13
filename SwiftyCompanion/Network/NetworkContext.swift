@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkContext {
-    static let env = NetworkContext()
+    static let shared = NetworkContext()
     
     var apiUrl: String?
     var clientId: String?
@@ -53,7 +53,7 @@ class NetworkContext {
         }
     }
     
-    private func getAccessToken(){
+    func getAccessToken(){
         if let apiUrl = self.apiUrl, let clientId = self.clientId, let clientSecret = self.clientSecret {
             guard let url = URL(string: "\(apiUrl)/oauth/token") else {
                 print("Error while creating the URL to get the access token")

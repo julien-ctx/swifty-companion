@@ -11,17 +11,23 @@ import SwiftUI
 struct UserDetailsView: View {
     @State var isLoading: Bool = true
     let login: String
-
+    
+    func getApiUrl() {
+        if let apiUrl = NetworkContext.shared.apiUrl {
+            print("Yes")
+        }
+    }
+    
     var body: some View {
-        if (isLoading) {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .scaleEffect(2)
-        } else {
-            Text(login)
+        Group {
+            if isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(2)
+            } else {
+                Text(login)
+            }
         }
-        if let apiUrl = NetworkContext.env.apiUrl {
-            Text("test")
-        }
+        .onAppear(perform: getApiUrl)
     }
 }
