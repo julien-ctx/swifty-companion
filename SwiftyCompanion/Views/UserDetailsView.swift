@@ -13,9 +13,18 @@ struct UserDetailsView: View {
                     .progressViewStyle(CircularProgressViewStyle())
                     .scaleEffect(2)
             } else if let user = user {
-                Text(user.firstName)
-                Text(user.lastName)
-                Text("\(String(format: "%.2f", user.cursusUsers[1].level))")
+                VStack {
+                    AsyncImage(url: URL(string: user.image.versions.large), scale: 4) {image in
+                        image.resizable().aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .scaleEffect(2)
+                    }
+                    Text("\(user.firstName) \(user.lastName)")
+                    Text("\(String(format: "%.2f", user.cursusUsers[1].level))")
+                }
+                Spacer()
             }
         }
         .onAppear {
