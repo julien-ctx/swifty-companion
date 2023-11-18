@@ -12,7 +12,7 @@ struct User: Codable {
     let email, login, firstName, lastName: String
     let image: APIImage
     let staff: Bool
-    let correctionPoint: Int
+    let correctionPoints: Int
     let location: String?
     let wallet: Int
     let cursusUsers: [CursusUser]
@@ -26,7 +26,7 @@ struct User: Codable {
         case lastName = "last_name"
         case image
         case staff = "staff?"
-        case correctionPoint = "correction_point"
+        case correctionPoints = "correction_point"
         case location, wallet
         case cursusUsers = "cursus_users"
         case projectsUsers = "projects_users"
@@ -47,7 +47,7 @@ struct APIImage: Codable {
 
 // MARK: - CursusUser
 struct CursusUser: Codable {
-    let level: Double
+    let level: CGFloat
     let skills: [Skill]
 
     struct Skill: Codable {

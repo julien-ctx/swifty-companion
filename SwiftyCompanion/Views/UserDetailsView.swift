@@ -20,60 +20,12 @@ struct UserDetailsView: View {
                         .edgesIgnoringSafeArea(.all)
                         .frame(minWidth: 0, maxWidth: .infinity)
                     ScrollView(.vertical) {
-                        VStack {
-                            AsyncImage(url: URL(string: user.image.versions.medium)) { image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(Circle())
-                            }
-                        placeholder: {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .scaleEffect(2)
-                        }
-                        .frame(width: UIScreen.main.bounds.width / 1.5)
-                        .aspectRatio(1, contentMode: .fit)
-                        .padding(.vertical, 7)
-                            
-                            Text("\(user.firstName) \(user.lastName)")
-                                .font(.system(size: 24, weight: .bold, design: .default))
-                                .foregroundColor(.white)
-                            Text(login)
-                                .font(.system(size: 18, weight: .semibold, design: .default))
-                                .foregroundColor(.white)
-                            VStack(spacing: 0) {
-                                HStack {
-                                    LabeledInfo(label: "Wallet", text: "\(user.wallet) ₳")
-                                    LabeledInfo(label: "Evaluation points", text: "\(user.correctionPoint)")
-                                }
-                                HStack {
-                                    LabeledInfo(label: "Campus", text: "\(user.campus[0].name)")
-                                    LabeledInfo(label: "Status", text: "\(user.staff ? "Staff" : "Student")")
-                                }
-                            }
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
-                            .padding(.horizontal)
-                            .padding(.bottom, 7)
-                            VStack(spacing: 0) {
-                                Text("\(user.location != nil ? "Available" : "Unavailable")")
-                                    .frame(maxWidth: .infinity)
-                                    .font(.system(size: 26, weight: .bold, design: .default))
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 15)
-                                    .padding(.top, 20)
-                                Text("\(user.location ?? "-")")
-                                    .frame(maxWidth: .infinity)
-                                    .font(.system(size: 22, weight: .bold, design: .default))
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 15)
-                                    .padding(.bottom, 20)
-                            }
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
-                            .padding(.horizontal)
-                            .padding(.bottom, 7)
-                            VStack {
-                                LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: String(format: "%.2f", user.cursusUsers[1].level))
-                            }
+                        VStack(spacing: 7) {
+                            UserImage(userImage: user.image.versions.medium)
+                            MainInformation(firstName: user.firstName, lastName: user.lastName, login: login)
+                            SecondaryInformation(wallet: user.wallet, correctionPoints: user.correctionPoints, campusName: user.campus[0].name, status: user.staff ? "Staff" : "Student")
+                            Location(location: user.location)
+                            LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: user.cursusUsers[1].level)
                         }
                     }
                 }

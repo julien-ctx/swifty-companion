@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LevelBar: View {
     var percentage: CGFloat
-    var level: String
+    var level: CGFloat
     
     var body: some View {
         GeometryReader { geometry in
@@ -19,16 +19,12 @@ struct LevelBar: View {
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .opacity(0.6)
                     .foregroundColor(.black)
-                
                 Rectangle()
                     .frame(width: min(percentage * geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(.accentColor)
-                    .animation(.linear, value: percentage)
-                Text("Level \(level)")
+                Text("Level \(String(format: "%.2f", level))")
                     .foregroundColor(.white)
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(1)
                     .fontWeight(.bold)
             }
             .cornerRadius(10)
