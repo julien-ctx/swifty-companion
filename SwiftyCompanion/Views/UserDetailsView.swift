@@ -33,6 +33,7 @@ struct UserDetailsView: View {
                         }
                         .frame(width: UIScreen.main.bounds.width / 1.5)
                         .aspectRatio(1, contentMode: .fit)
+                        .padding(.vertical, 7)
                             
                             Text("\(user.firstName) \(user.lastName)")
                                 .font(.system(size: 24, weight: .bold, design: .default))
@@ -51,7 +52,28 @@ struct UserDetailsView: View {
                                 }
                             }
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
-                            .padding()
+                            .padding(.horizontal)
+                            .padding(.bottom, 7)
+                            VStack(spacing: 0) {
+                                Text("\(user.location != nil ? "Available" : "Unavailable")")
+                                    .frame(maxWidth: .infinity)
+                                    .font(.system(size: 26, weight: .bold, design: .default))
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 15)
+                                    .padding(.top, 20)
+                                Text("\(user.location ?? "-")")
+                                    .frame(maxWidth: .infinity)
+                                    .font(.system(size: 22, weight: .bold, design: .default))
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 15)
+                                    .padding(.bottom, 20)
+                            }
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
+                            .padding(.horizontal)
+                            .padding(.bottom, 7)
+                            VStack {
+                                LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: String(format: "%.2f", user.cursusUsers[1].level))
+                            }
                         }
                     }
                 }

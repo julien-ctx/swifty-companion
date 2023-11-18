@@ -23,6 +23,7 @@
 		B73DA1232AFE82C70013B6E7 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA1222AFE82C70013B6E7 /* LargeButton.swift */; };
 		B73DA1252AFE927C0013B6E7 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DA1242AFE927C0013B6E7 /* TextInput.swift */; };
 		B74CDD4B2B08B6BB00772FAE /* LabeledInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CDD4A2B08B6BB00772FAE /* LabeledInfo.swift */; };
+		B75C3DE62B091A330096416A /* LevelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C3DE52B091A330096416A /* LevelBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		B73DA1222AFE82C70013B6E7 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		B73DA1242AFE927C0013B6E7 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		B74CDD4A2B08B6BB00772FAE /* LabeledInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledInfo.swift; sourceTree = "<group>"; };
+		B75C3DE52B091A330096416A /* LevelBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				B73DA1222AFE82C70013B6E7 /* LargeButton.swift */,
 				B73DA1242AFE927C0013B6E7 /* TextInput.swift */,
 				B74CDD4A2B08B6BB00772FAE /* LabeledInfo.swift */,
+				B75C3DE52B091A330096416A /* LevelBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				B73DA11E2AFE659A0013B6E7 /* SearchView.swift in Sources */,
 				B74CDD4B2B08B6BB00772FAE /* LabeledInfo.swift in Sources */,
 				B70AFA982B025A0F00DED102 /* User.swift in Sources */,
+				B75C3DE62B091A330096416A /* LevelBar.swift in Sources */,
 				B73DA0F32AFCEA0A0013B6E7 /* SwiftyCompanionApp.swift in Sources */,
 				B70AFA932B022D2A00DED102 /* NetworkContext.swift in Sources */,
 				B73DA1252AFE927C0013B6E7 /* TextInput.swift in Sources */,
