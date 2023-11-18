@@ -40,31 +40,15 @@ struct UserDetailsView: View {
                             Text(login)
                                 .font(.system(size: 18, weight: .semibold, design: .default))
                                 .foregroundColor(.white)
-                            HStack(spacing: 0) {
-                                Text("\(user.wallet)")
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 15)
-                                    .padding(.vertical, 10)
-                                
-                                Text("\(user.correctionPoint)")
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 15)
-                                    .padding(.vertical, 10)
-                                
-                                Text("\(user.campus[0].name)")
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 15)
-                                    .padding(.vertical, 10)
-                                
-                                
-                                Text("\(user.staff ? "Staff" : "Student")")
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 15)
-                                    .padding(.vertical, 10)
+                            VStack(spacing: 0) {
+                                HStack {
+                                    LabeledInfo(label: "Wallet", text: "\(user.wallet) ₳")
+                                    LabeledInfo(label: "Evaluation points", text: "\(user.correctionPoint)")
+                                }
+                                HStack {
+                                    LabeledInfo(label: "Campus", text: "\(user.campus[0].name)")
+                                    LabeledInfo(label: "Status", text: "\(user.staff ? "Staff" : "Student")")
+                                }
                             }
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
                             .padding()
