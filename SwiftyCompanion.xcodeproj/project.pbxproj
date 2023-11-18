@@ -28,6 +28,7 @@
 		B75C3DEA2B092E870096416A /* MainInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C3DE92B092E870096416A /* MainInformation.swift */; };
 		B75C3DEC2B092F1C0096416A /* UserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C3DEB2B092F1C0096416A /* UserImage.swift */; };
 		B75C3DEE2B092FB80096416A /* SecondaryInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C3DED2B092FB80096416A /* SecondaryInformation.swift */; };
+		B75C3DF02B0960230096416A /* DetailsViewSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75C3DEF2B0960230096416A /* DetailsViewSelector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		B75C3DE92B092E870096416A /* MainInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInformation.swift; sourceTree = "<group>"; };
 		B75C3DEB2B092F1C0096416A /* UserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImage.swift; sourceTree = "<group>"; };
 		B75C3DED2B092FB80096416A /* SecondaryInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryInformation.swift; sourceTree = "<group>"; };
+		B75C3DEF2B0960230096416A /* DetailsViewSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewSelector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				B75C3DE92B092E870096416A /* MainInformation.swift */,
 				B75C3DEB2B092F1C0096416A /* UserImage.swift */,
 				B75C3DED2B092FB80096416A /* SecondaryInformation.swift */,
+				B75C3DEF2B0960230096416A /* DetailsViewSelector.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				B73DA0F52AFCEA0A0013B6E7 /* ContentView.swift in Sources */,
 				B73DA11E2AFE659A0013B6E7 /* SearchView.swift in Sources */,
 				B75C3DEA2B092E870096416A /* MainInformation.swift in Sources */,
+				B75C3DF02B0960230096416A /* DetailsViewSelector.swift in Sources */,
 				B74CDD4B2B08B6BB00772FAE /* LabeledInfo.swift in Sources */,
 				B70AFA982B025A0F00DED102 /* User.swift in Sources */,
 				B75C3DEE2B092FB80096416A /* SecondaryInformation.swift in Sources */,

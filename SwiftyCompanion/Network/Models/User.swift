@@ -62,12 +62,14 @@ struct ProjectsUser: Codable {
     let status: String
     let validated: Bool?
     let project: Project
+    let cursusIds: [Int]
 
     enum CodingKeys: String, CodingKey {
         case finalMark = "final_mark"
         case status
         case validated = "validated?"
         case project
+        case cursusIds = "cursus_ids"
     }
     
     struct Project: Codable {

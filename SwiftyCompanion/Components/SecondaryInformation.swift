@@ -15,7 +15,7 @@ struct SecondaryInformation: View {
     let status: String
     
     var body: some View {
-        Group {
+        VStack {
             HStack {
                 LabeledInfo(label: "Wallet", text: "\(wallet) ₳")
                 LabeledInfo(label: "Evaluation points", text: "\(correctionPoints)")
