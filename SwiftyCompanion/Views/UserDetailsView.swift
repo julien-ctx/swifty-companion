@@ -13,18 +13,64 @@ struct UserDetailsView: View {
                     .progressViewStyle(CircularProgressViewStyle())
                     .scaleEffect(2)
             } else if let user = user {
-                VStack {
-                    AsyncImage(url: URL(string: user.image.versions.large), scale: 4) {image in
-                        image.resizable().aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .scaleEffect(2)
+                ZStack {
+                    Image("42background")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .edgesIgnoringSafeArea(.all)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                    ScrollView(.vertical) {
+                        VStack {
+                            AsyncImage(url: URL(string: user.image.versions.medium)) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(Circle())
+                            }
+                        placeholder: {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .scaleEffect(2)
+                        }
+                        .frame(width: UIScreen.main.bounds.width / 1.5)
+                        .aspectRatio(1, contentMode: .fit)
+                            
+                            Text("\(user.firstName) \(user.lastName)")
+                                .font(.system(size: 24, weight: .bold, design: .default))
+                                .foregroundColor(.white)
+                            Text(login)
+                                .font(.system(size: 18, weight: .semibold, design: .default))
+                                .foregroundColor(.white)
+                            HStack(spacing: 0) {
+                                Text("\(user.wallet)")
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 10)
+                                
+                                Text("\(user.correctionPoint)")
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 10)
+                                
+                                Text("\(user.campus[0].name)")
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 10)
+                                
+                                
+                                Text("\(user.staff ? "Staff" : "Student")")
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 10)
+                            }
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
+                            .padding()
+                        }
                     }
-                    Text("\(user.firstName) \(user.lastName)")
-                    Text("\(String(format: "%.2f", user.cursusUsers[1].level))")
                 }
-                Spacer()
             }
         }
         .onAppear {
