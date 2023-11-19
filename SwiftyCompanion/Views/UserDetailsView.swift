@@ -59,6 +59,8 @@ struct UserDetailsView: View {
             if let info = userInfo {
                 user = info
                 isLoading = false
+            } else {
+                print("No user info")
             }
         } catch {
             print("Error in loadUserInformation")

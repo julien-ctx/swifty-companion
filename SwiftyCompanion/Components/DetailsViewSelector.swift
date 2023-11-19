@@ -13,48 +13,11 @@ struct DetailsViewSelector: View {
         
     var body: some View {
         HStack() {
-            Button(action: {
-                currentView = .projects
-                
-            }) {
-                Text("Projects")
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 8)
-            }
-            .background(currentView == .projects ? Color.accentColor : .black.opacity(0))
-            .foregroundColor(.white)
-            .fontWeight(.bold)
-            .cornerRadius(10)
+            DetailsViewSelectorButton(currentView: $currentView, buttonViewType: .projects, text: "Projects")
             Spacer()
-
-
-            Button(action: {
-                currentView = .achievements
-                
-            }) {
-                Text("Achievements")
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 8)
-            }
-            .background(currentView == .achievements ? Color.accentColor : .black.opacity(0))
-            .foregroundColor(.white)
-            .fontWeight(.bold)
-            .cornerRadius(10)
+            DetailsViewSelectorButton(currentView: $currentView, buttonViewType: .achievements, text: "Achievements")
             Spacer()
-
-
-            Button(action: {
-                currentView = .skills
-                
-            }) {
-                Text("Skills")
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 8)
-            }
-            .background(currentView == .skills ? Color.accentColor : .black.opacity(0))
-            .foregroundColor(.white)
-            .fontWeight(.bold)
-            .cornerRadius(10)
+            DetailsViewSelectorButton(currentView: $currentView, buttonViewType: .skills, text: "Skills")
         }
         .padding()
     }
