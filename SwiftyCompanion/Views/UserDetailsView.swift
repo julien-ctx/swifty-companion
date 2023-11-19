@@ -35,13 +35,46 @@ struct UserDetailsView: View {
                             Location(location: user.location)
                             LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: user.cursusUsers[1].level)
                             DetailsViewSelector(currentView: $currentView)
-//                            ForEach(Array(user.projectsUsers.enumerated()), id: \.offset) { index, singleProject in
-//                                if singleProject.cursusIds[0] == 21 && singleProject.validated == true {
-//                                    Text("\(singleProject.project.name)")
-//                                }
-//                            }
-
+                            ScrollView() {
+                                VStack(spacing: 15) {
+                                    switch currentView {
+                                    case .projects:
+                                        ForEach(Array(user.projectsUsers.enumerated()), id: \.offset) { index, singleProject in
+                                            if singleProject.cursusIds[0] == 21 && singleProject.finalMark != nil {
+                                                HStack() {
+                                                    Text("\(singleProject.project.name)")
+                                                        .font(.system(size: 18, weight: .bold, design: .default))
+                                                        .foregroundColor(singleProject.validated == true ? .green : .red)
+                                                        .lineLimit(1)
+                                                        .truncationMode(.tail)
+                                                    Spacer()
+                                                    Image(systemName: singleProject.validated == true ? "checkmark" : "xmark")
+                                                        .foregroundColor(singleProject.validated == true ? .green : .red)
+                                                    if let finalMark = singleProject.finalMark {
+                                                        Text("\(finalMark)")
+                                                            .font(.system(size: 18, weight: .bold, design: .default))
+                                                            .foregroundColor(singleProject.validated == true ? .green : .red)
+                                                            .lineLimit(1)
+                                                            .truncationMode(.tail)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    case .achievements:
+                                        Text("Nothing")
+                                    case .skills:
+                                        Text("Nothing")
+                                    }
+                                }
+                                .padding()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 400)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
+                            .padding(.horizontal)
+                            .padding(.bottom, 7)
                         }
+                        .frame(maxWidth: .infinity)
                     }
                 }
             }
