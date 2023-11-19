@@ -14,6 +14,24 @@ struct UserDetailsView: View {
     
     let login: String
     
+    func getSanitizedAchievements(fullAchievementList: [Achievement]) -> [String] {
+        var achievementsOccurences: [String: Int] = [:]
+        
+        for singleAchievement in fullAchievementList {
+            if let count = achievementsOccurences[singleAchievement.name] {
+                achievementsOccurences[singleAchievement.name] = count + 1
+            } else {
+                achievementsOccurences[singleAchievement.name] = 1
+            }
+        }
+        var sanitizedAchievementList: [String] = []
+        for (key, value) in achievementsOccurences {
+            sanitizedAchievementList.append(value == 1 ? key : "\(key) \(value)")
+        }
+        return sanitizedAchievementList
+    }
+    
+    
     var body: some View {
         Group {
             if isLoading {
@@ -41,27 +59,18 @@ struct UserDetailsView: View {
                                     case .projects:
                                         ForEach(Array(user.projectsUsers.enumerated()), id: \.offset) { index, singleProject in
                                             if singleProject.cursusIds[0] == 21 && singleProject.finalMark != nil {
-                                                HStack() {
-                                                    Text("\(singleProject.project.name)")
-                                                        .font(.system(size: 18, weight: .bold, design: .default))
-                                                        .foregroundColor(singleProject.validated == true ? .green : .red)
-                                                        .lineLimit(1)
-                                                        .truncationMode(.tail)
-                                                    Spacer()
-                                                    Image(systemName: singleProject.validated == true ? "checkmark" : "xmark")
-                                                        .foregroundColor(singleProject.validated == true ? .green : .red)
-                                                    if let finalMark = singleProject.finalMark {
-                                                        Text("\(finalMark)")
-                                                            .font(.system(size: 18, weight: .bold, design: .default))
-                                                            .foregroundColor(singleProject.validated == true ? .green : .red)
-                                                            .lineLimit(1)
-                                                            .truncationMode(.tail)
-                                                    }
-                                                }
+                                                SingleProject(project: singleProject)
                                             }
                                         }
                                     case .achievements:
-                                        Text("Nothing")
+                                        ForEach(getSanitizedAchievements(fullAchievementList: user.achievements), id: \.self) { singleAchievement in
+                                            Text(singleAchievement)
+                                                .font(.system(size: 18, weight: .bold, design: .default))
+                                                .foregroundColor(.white)
+                                                .lineLimit(1)
+                                                .truncationMode(.tail)
+                                        }
+                                        
                                     case .skills:
                                         Text("Nothing")
                                     }
