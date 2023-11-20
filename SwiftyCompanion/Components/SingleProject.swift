@@ -18,6 +18,7 @@ struct SingleProject: View {
                 .foregroundColor(project.validated == true ? .green : .red)
                 .lineLimit(1)
                 .truncationMode(.tail)
+                .padding(.trailing)
             Spacer()
             Image(systemName: project.validated == true ? "checkmark" : "xmark")
                 .foregroundColor(project.validated == true ? .green : .red)

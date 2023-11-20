@@ -49,11 +49,11 @@ struct APIImage: Codable {
 struct CursusUser: Codable {
     let level: CGFloat
     let skills: [Skill]
+}
 
-    struct Skill: Codable {
-        let id: Int
-        let name: String
-    }
+struct Skill: Codable {
+    let name: String
+    let level: CGFloat
 }
 
 // MARK: - ProjectsUser

@@ -68,7 +68,9 @@ struct UserDetailsView: View {
                                         }
                                         
                                     case .skills:
-                                        Text("Nothing")
+                                        ForEach(Array(user.cursusUsers[1].skills.enumerated()), id: \.offset) {index, singleSkill in
+                                            SingleSkill(skill: singleSkill)
+                                        }
                                     }
                                 }
                                 .padding()

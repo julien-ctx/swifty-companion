@@ -1,27 +1,28 @@
 //
-//  SingleAchievement.swift
+//  SingleSkill.swift
 //  SwiftyCompanion
 //
-//  Created by Julien Caucheteux on 19/11/2023.
+//  Created by Julien Caucheteux on 20/11/2023.
 //
 
 import Foundation
 import SwiftUI
 
-struct SingleAchievement: View {
-    let text: String
+struct SingleSkill: View {
+    let skill: Skill
     
     var body: some View {
         HStack {
-            Text(text)
+            Text(skill.name)
                 .font(.system(size: 18, weight: .bold, design: .default))
                 .foregroundColor(.white)
                 .lineLimit(1)
                 .truncationMode(.tail)
                 .padding(.trailing)
             Spacer()
-            Image(systemName: "medal")
-                .foregroundColor(.yellow)
+            Text("\(String(format: "%.2f", skill.level))")
+                .font(.system(size: 18, weight: .bold, design: .default))
+                .foregroundColor(.accentColor)
         }
     }
 }
