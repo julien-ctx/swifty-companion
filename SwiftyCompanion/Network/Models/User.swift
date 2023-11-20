@@ -80,7 +80,6 @@ struct ProjectsUser: Codable {
 // MARK: - Achievement
 struct Achievement: Codable {
     let name: String
-    let image: String
 }
 
 // MARK: - Campus

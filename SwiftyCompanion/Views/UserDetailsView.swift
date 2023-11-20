@@ -63,12 +63,8 @@ struct UserDetailsView: View {
                                             }
                                         }
                                     case .achievements:
-                                        ForEach(getSanitizedAchievements(fullAchievementList: user.achievements), id: \.self) { singleAchievement in
-                                            Text(singleAchievement)
-                                                .font(.system(size: 18, weight: .bold, design: .default))
-                                                .foregroundColor(.white)
-                                                .lineLimit(1)
-                                                .truncationMode(.tail)
+                                        ForEach(getSanitizedAchievements(fullAchievementList: user.achievements), id: \.self) { achievementName in
+                                            SingleAchievement(text: achievementName)
                                         }
                                         
                                     case .skills:
