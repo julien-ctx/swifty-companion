@@ -10,7 +10,8 @@ import SwiftUI
 
 struct DetailsViewSelector: View {
     @Binding var currentView: ViewType
-        
+    let user: User
+    
     var body: some View {
         HStack() {
             DetailsViewSelectorButton(currentView: $currentView, buttonViewType: .projects, text: "Projects")

@@ -9,9 +9,9 @@ import Foundation
 
 struct User: Codable {
     let id: Int
-    let email, login, firstName, lastName: String
+    let login, firstName, lastName: String
     let image: APIImage
-    let staff: Bool
+    let staff: Bool?
     let correctionPoints: Int
     let location: String?
     let wallet: Int
@@ -21,7 +21,7 @@ struct User: Codable {
     let campus: [Campus]
     
     enum CodingKeys: String, CodingKey {
-        case id, email, login
+        case id, login
         case firstName = "first_name"
         case lastName = "last_name"
         case image
