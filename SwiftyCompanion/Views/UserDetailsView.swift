@@ -43,6 +43,8 @@ struct UserDetailsView: View {
                             Location(location: user.location)
                             if let singleCursusUsers = user.cursusUsers.first(where: {$0.grade == "Member"}) {
                                 LevelBar(percentage: CGFloat(singleCursusUsers.level.truncatingRemainder(dividingBy: 1)), level: singleCursusUsers.level)
+                            } else if let singleCursusUsers = user.cursusUsers.first(where: {$0.grade == "Learner"}) {
+                                LevelBar(percentage: CGFloat(singleCursusUsers.level.truncatingRemainder(dividingBy: 1)), level: singleCursusUsers.level)
                             }
                         }
                         DetailsViewSelector(currentView: $currentView, user: user)
@@ -73,7 +75,11 @@ struct UserDetailsView: View {
                                     }
                                 case .skills:
                                     if let singleCursusUsers = user.cursusUsers.first(where: { $0.grade == "Member" }), !singleCursusUsers.skills.isEmpty {
-                                        ForEach(Array(user.cursusUsers[1].skills.enumerated()), id: \.offset) { index, singleSkill in
+                                        ForEach(Array(singleCursusUsers.skills.enumerated()), id: \.offset) { index, singleSkill in
+                                            SingleSkill(skill: singleSkill)
+                                        }
+                                    } else if let singleCursusUsers = user.cursusUsers.first(where: { $0.grade == "Learner" }), !singleCursusUsers.skills.isEmpty {
+                                        ForEach(Array(singleCursusUsers.skills.enumerated()), id: \.offset) { index, singleSkill in
                                             SingleSkill(skill: singleSkill)
                                         }
                                     } else {
