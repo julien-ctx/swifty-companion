@@ -14,7 +14,12 @@ struct MainInformation: View {
     let login: String
     
     var body: some View {
-        LargeTitle(isUppercase: false, color: .white, text: "\(firstName) \(lastName)")
-        MediumTitle(isUppercase: false, color: .white, text: login)
+        VStack {
+            LargeTitle(isUppercase: false, color: .white, text: "\(firstName) \(lastName)")
+                .lineLimit(1)
+            MediumTitle(isUppercase: false, color: .white, text: login)
+                .lineLimit(1)
+        }
+        .padding(.horizontal)
     }
 }

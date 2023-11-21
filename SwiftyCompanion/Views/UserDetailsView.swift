@@ -39,7 +39,7 @@ struct UserDetailsView: View {
                         }
                         MainInformation(firstName: user.firstName, lastName: user.lastName, login: login)
                         SecondaryInformation(user: user)
-                        if user.staff != true {
+                        if user.staff != true && user.cursusUsers.count > 1 {
                             Location(location: user.location)
                             LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: user.cursusUsers[1].level)
                         }
