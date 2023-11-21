@@ -11,12 +11,19 @@ struct UserDetailsView: View {
     @State var isLoading: Bool = true
     @State var user: User?
     @State var currentView: ViewType = .projects
+    @State var errorMessage: String?
     
     let login: String
     
     var body: some View {
         Group {
-            if isLoading {
+            if let errorMessage = errorMessage {
+                VStack {
+                    Text("Error".uppercased())
+                        .font(.system(size: 28, weight: .bold, design: .default))
+                    Text(errorMessage)
+                }
+            } else if isLoading {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
                     .scaleEffect(2)
@@ -29,7 +36,9 @@ struct UserDetailsView: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                     ScrollView(.vertical) {
                         VStack(spacing: 7) {
-                            UserImage(userImage: user.image.versions.medium)
+                            if let image = user.image.versions.medium {
+                                UserImage(userImage: image)
+                            }
                             MainInformation(firstName: user.firstName, lastName: user.lastName, login: login)
                             SecondaryInformation(user: user)
                             if user.staff != true {
@@ -100,11 +109,14 @@ struct UserDetailsView: View {
                 user = info
                 isLoading = false
             } else {
-                print("No user info")
+                errorMessage = "No user information."
             }
+        } catch let error as NetworkError {
+            errorMessage = "\(error.errorMessage)"
         } catch {
-            print("Error in loadUserInformation")
+            errorMessage = "Something went wrong."
         }
+
     }
     
     private func hasMatchingProjects() -> Bool {

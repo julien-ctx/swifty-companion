@@ -106,15 +106,19 @@ class NetworkContext {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
-            throw NetworkError.noData
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.invalidResponse
         }
+        
+        if !(200...299).contains(httpResponse.statusCode) {
+            throw NetworkError.httpError(statusCode: httpResponse.statusCode)
+        }
+        
         var decodedResponse: User?
         do {
             decodedResponse = try JSONDecoder().decode(User.self, from: data)
         } catch {
-            print("Error decoding JSON: \(error)")
+            throw NetworkError.decodingError
         }
         return decodedResponse
     }
@@ -123,6 +127,24 @@ class NetworkContext {
 
 enum NetworkError: Error {
     case invalidURL
-    case noData
-    case decodingFailed
+    case invalidResponse
+    case decodingError
+    case httpError(statusCode: Int)
+    
+    var errorMessage: String {
+        switch self {
+        case .invalidURL:
+            return "The URL could not be reached."
+        case .invalidResponse:
+            return "No data received from the server."
+        case .decodingError:
+            return "User data couln't be decoded correctly."
+        case .httpError(let statusCode):
+            if statusCode == 404 {
+                return "User not found."
+            } else {
+                return "HTTP request failed with status code: \(statusCode)."
+            }
+        }
+    }
 }

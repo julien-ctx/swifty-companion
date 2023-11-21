@@ -37,11 +37,10 @@ struct User: Codable {
 
 // MARK: - Image
 struct APIImage: Codable {
-    let link: String
     let versions: Versions
     
     struct Versions: Codable {
-        let large, medium, small, micro: String
+        let large, medium, small, micro: String?
     }
 }
 
