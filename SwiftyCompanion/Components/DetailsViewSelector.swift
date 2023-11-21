@@ -20,6 +20,6 @@ struct DetailsViewSelector: View {
             Spacer()
             DetailsViewSelectorButton(currentView: $currentView, buttonViewType: .skills, text: "Skills")
         }
-        .padding()
+        .padding(.horizontal)
     }
 }

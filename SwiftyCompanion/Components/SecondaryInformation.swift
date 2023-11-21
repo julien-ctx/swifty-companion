@@ -24,6 +24,5 @@ struct SecondaryInformation: View {
         }
         .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
         .padding(.horizontal)
-        .padding(.bottom, 7)
     }
 }

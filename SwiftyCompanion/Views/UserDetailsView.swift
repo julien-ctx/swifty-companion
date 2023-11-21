@@ -33,7 +33,7 @@ struct UserDetailsView: View {
                     .scaleEffect(3)
             } else if let user = user {
                 ScrollView(.vertical) {
-                    VStack(spacing: 7) {
+                    VStack(spacing: 22) {
                         if let image = user.image.versions.medium {
                             UserImage(userImage: image)
                         }
@@ -86,7 +86,6 @@ struct UserDetailsView: View {
                         .frame(maxWidth: .infinity, maxHeight: 400)
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
                         .padding(.horizontal)
-                        .padding(.bottom, 7)
                     }
                     .frame(maxWidth: .infinity)
                 }
