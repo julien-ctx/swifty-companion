@@ -9,7 +9,7 @@ import Foundation
 
 struct User: Codable {
     let id: Int
-    let login, firstName, lastName: String
+    let login, firstName, lastName, email: String
     let image: APIImage
     let staff: Bool?
     let correctionPoints: Int
@@ -24,7 +24,7 @@ struct User: Codable {
         case id, login
         case firstName = "first_name"
         case lastName = "last_name"
-        case image
+        case image, email
         case staff = "staff?"
         case correctionPoints = "correction_point"
         case location, wallet

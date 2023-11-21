@@ -37,7 +37,7 @@ struct UserDetailsView: View {
                         if let image = user.image.versions.medium {
                             UserImage(userImage: image)
                         }
-                        MainInformation(firstName: user.firstName, lastName: user.lastName, login: login)
+                        MainInformation(firstName: user.firstName, lastName: user.lastName, email: user.email, login: login)
                         SecondaryInformation(user: user)
                         if user.staff != true {
                             Location(location: user.location)
