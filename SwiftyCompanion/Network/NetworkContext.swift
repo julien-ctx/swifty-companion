@@ -85,7 +85,6 @@ class NetworkContext {
                 print("Error while decoding")
                 return
             }
-            print(decodedResponse.accessToken)
             self.accessToken = decodedResponse.accessToken
             self.expirationTime = Int(decodedResponse.expiresIn) + Int(decodedResponse.createdAt)
         } catch {

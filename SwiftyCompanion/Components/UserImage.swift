@@ -12,8 +12,10 @@ struct UserImage: View {
     let userImage: String
     var body: some View {
         AsyncImage(url: URL(string: userImage)) { image in
-            image.resizable()
-                .aspectRatio(contentMode: .fit)
+            image
+                .resizable()
+                .scaledToFill()
+                .frame(width: 200, height: 200)
                 .clipShape(Circle())
         }
         placeholder: {
@@ -21,7 +23,5 @@ struct UserImage: View {
                 .progressViewStyle(CircularProgressViewStyle())
                 .scaleEffect(2)
         }
-        .frame(width: UIScreen.main.bounds.width / 1.5)
-        .aspectRatio(1, contentMode: .fit)
     }
 }
