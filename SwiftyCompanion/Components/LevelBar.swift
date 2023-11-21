@@ -22,15 +22,12 @@ struct LevelBar: View {
                 Rectangle()
                     .frame(width: min(percentage * geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(.accentColor)
-                Text("Level \(String(format: "%.2f", level))")
-                    .foregroundColor(.white)
+                SmallTitle(isUppercase: false, color: .white, text: "Level \(String(format: "%.2f", level))")
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .fontWeight(.bold)
             }
             .cornerRadius(10)
         }
         .frame(height: 26)
         .padding(.horizontal)
-        .padding(.bottom, 7)
     }
 }

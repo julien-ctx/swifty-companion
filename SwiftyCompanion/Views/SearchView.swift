@@ -42,7 +42,7 @@ struct SearchView: View {
                         }
                     }
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("An error occurred"), message: Text("You need to enter a login to display the user information"), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("An error occurred").font(.system(size: 26, weight: .bold, design: .default)), message: Text("You need to enter a login to display the user information").font(.system(size: 18, weight: .semibold, design: .default)), dismissButton: .default(Text("OK").font(.system(size: 18, weight: .semibold, design: .default))))
                     }
                 }
                 .padding(.horizontal)

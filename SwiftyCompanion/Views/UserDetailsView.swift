@@ -19,9 +19,8 @@ struct UserDetailsView: View {
         Group {
             if let errorMessage = errorMessage {
                 VStack {
-                    Text("Error".uppercased())
-                        .font(.system(size: 28, weight: .bold, design: .default))
-                    Text(errorMessage)
+                    LargeTitle(isUppercase: true, color: .black, text: "ERROR")
+                    SmallTitle(isUppercase: false, color: .black, text: errorMessage)
                 }
             } else if isLoading {
                 ProgressView()
@@ -116,7 +115,7 @@ struct UserDetailsView: View {
         } catch {
             errorMessage = "Something went wrong."
         }
-
+        
     }
     
     private func hasMatchingProjects() -> Bool {

@@ -13,9 +13,7 @@ struct SingleAchievement: View {
     
     var body: some View {
         HStack {
-            Text(text)
-                .font(.system(size: 18, weight: .bold, design: .default))
-                .foregroundColor(.white)
+            SmallTitle(isUppercase: false, color: .white, text: text)
                 .lineLimit(1)
                 .truncationMode(.tail)
                 .padding(.trailing)

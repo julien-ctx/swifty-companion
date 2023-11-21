@@ -12,13 +12,9 @@ struct MainInformation: View {
     let firstName: String
     let lastName: String
     let login: String
-        
+    
     var body: some View {
-        Text("\(firstName) \(lastName)")
-            .font(.system(size: 24, weight: .bold, design: .default))
-            .foregroundColor(.white)
-        Text(login)
-            .font(.system(size: 18, weight: .semibold, design: .default))
-            .foregroundColor(.white)
+        LargeTitle(isUppercase: false, color: .white, text: "\(firstName) \(lastName)")
+        MediumTitle(isUppercase: false, color: .white, text: login)
     }
 }

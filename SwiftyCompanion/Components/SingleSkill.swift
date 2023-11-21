@@ -13,16 +13,12 @@ struct SingleSkill: View {
     
     var body: some View {
         HStack {
-            Text(skill.name)
-                .font(.system(size: 18, weight: .bold, design: .default))
-                .foregroundColor(.white)
+            SmallTitle(isUppercase: false, color: .white, text: skill.name)
                 .lineLimit(1)
                 .truncationMode(.tail)
                 .padding(.trailing)
             Spacer()
-            Text("\(String(format: "%.2f", skill.level))")
-                .font(.system(size: 18, weight: .bold, design: .default))
-                .foregroundColor(.accentColor)
+            SmallTitle(isUppercase: false, color: .accentColor, text: "\(String(format: "%.2f", skill.level))")
         }
     }
 }

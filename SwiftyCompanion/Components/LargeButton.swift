@@ -18,12 +18,11 @@ struct LargeButton: View {
                 action()
             } label: {
                 HStack {
-                    Text(title)
-                        .textCase(.uppercase)
-                        .font(.system(size: 22, weight: .semibold, design: .default))
+                    LargeTitle(isUppercase: true, color: .white, text: "Search")
                         .frame(maxWidth: .infinity)
+
                     Image(systemName: iconName)
-                        .font(.system(size: 22, weight: .semibold))
+                        .font(.system(size: 26, weight: .semibold))
                 }
                 .padding()
                 .foregroundStyle(.white)

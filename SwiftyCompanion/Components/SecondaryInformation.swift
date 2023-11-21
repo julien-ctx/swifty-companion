@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct SecondaryInformation: View {
-    
     let user: User
     
     var body: some View {

@@ -17,8 +17,7 @@ struct DetailsViewSelectorButton: View {
         Button(action: {
             currentView = buttonViewType
         }) {
-            Text(text)
-                .font(.system(size: 18, weight: .semibold, design: .default))
+            SmallTitle(isUppercase: false, color: .white, text: text)
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
         }

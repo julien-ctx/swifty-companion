@@ -13,16 +13,12 @@ struct Location: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("\(location != nil ? "Available" : "Unavailable")")
+            LargeTitle(isUppercase: false, color: .white, text: "\(location != nil ? "Available" : "Unavailable")")
                 .frame(maxWidth: .infinity)
-                .font(.system(size: 26, weight: .bold, design: .default))
-                .foregroundColor(.white)
                 .padding(.horizontal, 15)
                 .padding(.top, 20)
-            Text("\(location ?? "-")")
+            MediumTitle(isUppercase: false, color: .white, text: "\(location ?? "-")")
                 .frame(maxWidth: .infinity)
-                .font(.system(size: 22, weight: .bold, design: .default))
-                .foregroundColor(.white)
                 .padding(.horizontal, 15)
                 .padding(.bottom, 20)
         }
