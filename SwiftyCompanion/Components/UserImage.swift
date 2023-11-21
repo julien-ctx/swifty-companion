@@ -20,9 +20,9 @@ struct UserImage: View {
                 .clipShape(Circle())
         }
         placeholder: {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .scaleEffect(2)
+            Color.white.opacity(0.5)
+                .frame(width: 200, height: 200)
+                .clipShape(Circle())
         }
     }
 }

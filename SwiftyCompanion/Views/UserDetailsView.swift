@@ -16,81 +16,79 @@ struct UserDetailsView: View {
     let login: String
     
     var body: some View {
-        Group {
+        ZStack {
+            Image("42background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+                .frame(minWidth: 0, maxWidth: .infinity)
             if let errorMessage = errorMessage {
                 VStack {
-                    LargeTitle(isUppercase: true, color: .black, text: "ERROR")
-                    SmallTitle(isUppercase: false, color: .black, text: errorMessage)
+                    LargeTitle(isUppercase: true, color: .white, text: "ERROR")
+                    SmallTitle(isUppercase: false, color: .white, text: errorMessage)
                 }
             } else if isLoading {
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .scaleEffect(2)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .scaleEffect(3)
             } else if let user = user {
-                ZStack {
-                    Image("42background")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .edgesIgnoringSafeArea(.all)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                    ScrollView(.vertical) {
-                        VStack(spacing: 7) {
-                            if let image = user.image.versions.medium {
-                                UserImage(userImage: image)
-                            }
-                            MainInformation(firstName: user.firstName, lastName: user.lastName, login: login)
-                            SecondaryInformation(user: user)
-                            if user.staff != true {
-                                Location(location: user.location)
-                                LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: user.cursusUsers[1].level)
-                            }
-                            DetailsViewSelector(currentView: $currentView, user: user)
-                            ScrollView() {
-                                VStack(spacing: 15) {
-                                    switch currentView {
-                                    case .projects:
-                                        if hasMatchingProjects() {
-                                            ForEach(Array(user.projectsUsers.enumerated()), id: \.offset) { index, singleProject in
-                                                if isMatchingProject(project: singleProject) {
-                                                    SingleProject(project: singleProject)
-                                                }
+                ScrollView(.vertical) {
+                    VStack(spacing: 7) {
+                        if let image = user.image.versions.medium {
+                            UserImage(userImage: image)
+                        }
+                        MainInformation(firstName: user.firstName, lastName: user.lastName, login: login)
+                        SecondaryInformation(user: user)
+                        if user.staff != true {
+                            Location(location: user.location)
+                            LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: user.cursusUsers[1].level)
+                        }
+                        DetailsViewSelector(currentView: $currentView, user: user)
+                        ScrollView() {
+                            VStack(spacing: 15) {
+                                switch currentView {
+                                case .projects:
+                                    if hasMatchingProjects() {
+                                        ForEach(Array(user.projectsUsers.enumerated()), id: \.offset) { index, singleProject in
+                                            if isMatchingProject(project: singleProject) {
+                                                SingleProject(project: singleProject)
                                             }
-                                        } else {
-                                            Text("No projects!")
-                                                .font(.system(size: 18, weight: .bold, design: .default))
-                                                .foregroundColor(.white)
                                         }
-                                    case .achievements:
-                                        if user.achievements.count != 0 {
-                                            ForEach(getSanitizedAchievements(fullAchievementList: user.achievements), id: \.self) { achievementName in
-                                                SingleAchievement(text: achievementName)
-                                            }
-                                        } else {
-                                            Text("No achievements!")
-                                                .font(.system(size: 18, weight: .bold, design: .default))
-                                                .foregroundColor(.white)
+                                    } else {
+                                        Text("No projects!")
+                                            .font(.system(size: 18, weight: .bold, design: .default))
+                                            .foregroundColor(.white)
+                                    }
+                                case .achievements:
+                                    if user.achievements.count != 0 {
+                                        ForEach(getSanitizedAchievements(fullAchievementList: user.achievements), id: \.self) { achievementName in
+                                            SingleAchievement(text: achievementName)
                                         }
-                                    case .skills:
-                                        if user.cursusUsers.count > 1 && user.cursusUsers[1].skills.count != 0 {
-                                            ForEach(Array(user.cursusUsers[1].skills.enumerated()), id: \.offset) {index, singleSkill in
-                                                SingleSkill(skill: singleSkill)
-                                            }
-                                        } else {
-                                            Text("No skills!")
-                                                .font(.system(size: 18, weight: .bold, design: .default))
-                                                .foregroundColor(.white)
+                                    } else {
+                                        Text("No achievements!")
+                                            .font(.system(size: 18, weight: .bold, design: .default))
+                                            .foregroundColor(.white)
+                                    }
+                                case .skills:
+                                    if user.cursusUsers.count > 1 && user.cursusUsers[1].skills.count != 0 {
+                                        ForEach(Array(user.cursusUsers[1].skills.enumerated()), id: \.offset) {index, singleSkill in
+                                            SingleSkill(skill: singleSkill)
                                         }
+                                    } else {
+                                        Text("No skills!")
+                                            .font(.system(size: 18, weight: .bold, design: .default))
+                                            .foregroundColor(.white)
                                     }
                                 }
-                                .padding()
                             }
-                            .frame(maxWidth: .infinity, maxHeight: 400)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
-                            .padding(.horizontal)
-                            .padding(.bottom, 7)
+                            .padding()
                         }
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: 400)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.black.opacity(0.6)))
+                        .padding(.horizontal)
+                        .padding(.bottom, 7)
                     }
+                    .frame(maxWidth: .infinity)
                 }
             }
         }
