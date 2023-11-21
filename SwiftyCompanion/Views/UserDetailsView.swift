@@ -39,9 +39,11 @@ struct UserDetailsView: View {
                         }
                         MainInformation(firstName: user.firstName, lastName: user.lastName, login: login)
                         SecondaryInformation(user: user)
-                        if user.staff != true && user.cursusUsers.count > 1 {
+                        if user.staff != true {
                             Location(location: user.location)
-                            LevelBar(percentage: CGFloat(user.cursusUsers[1].level.truncatingRemainder(dividingBy: 1)), level: user.cursusUsers[1].level)
+                            if let singleCursusUsers = user.cursusUsers.first(where: {$0.grade == "Member"}) {
+                                LevelBar(percentage: CGFloat(singleCursusUsers.level.truncatingRemainder(dividingBy: 1)), level: singleCursusUsers.level)
+                            }
                         }
                         DetailsViewSelector(currentView: $currentView, user: user)
                         ScrollView() {
@@ -70,8 +72,8 @@ struct UserDetailsView: View {
                                             .foregroundColor(.white)
                                     }
                                 case .skills:
-                                    if user.cursusUsers.count > 1 && user.cursusUsers[1].skills.count != 0 {
-                                        ForEach(Array(user.cursusUsers[1].skills.enumerated()), id: \.offset) {index, singleSkill in
+                                    if let singleCursusUsers = user.cursusUsers.first(where: { $0.grade == "Member" }), !singleCursusUsers.skills.isEmpty {
+                                        ForEach(Array(user.cursusUsers[1].skills.enumerated()), id: \.offset) { index, singleSkill in
                                             SingleSkill(skill: singleSkill)
                                         }
                                     } else {

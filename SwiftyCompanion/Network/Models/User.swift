@@ -46,13 +46,14 @@ struct APIImage: Codable {
 
 // MARK: - CursusUser
 struct CursusUser: Codable {
+    let grade: String?
     let level: CGFloat
     let skills: [Skill]
 }
 
 struct Skill: Codable {
-    let name: String
     let level: CGFloat
+    let name: String
 }
 
 // MARK: - ProjectsUser
