@@ -96,6 +96,7 @@ struct UserDetailsView: View {
                         .padding(.horizontal)
                     }
                     .frame(maxWidth: .infinity)
+                    .padding(.vertical, 20)
                 }
             }
         }

@@ -18,10 +18,12 @@ struct LabeledInfo:  View {
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal, 15)
                 .padding(.top, 10)
+                .multilineTextAlignment(.center)
             SmallTitle(isUppercase: false, color: .white, text: text)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 15)
             .padding(.bottom, 10)
+            .multilineTextAlignment(.center)
         }
     }
 }
