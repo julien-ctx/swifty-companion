@@ -17,17 +17,20 @@ struct UserDetailsView: View {
     
     var body: some View {
         ZStack {
-            Image("42background")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
-                .frame(minWidth: 0, maxWidth: .infinity)
             if let errorMessage = errorMessage {
+                Image("42background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     LargeTitle(isUppercase: true, color: .white, text: "ERROR")
                     SmallTitle(isUppercase: false, color: .white, text: errorMessage)
                 }
             } else if isLoading {
+                Image("42background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     .scaleEffect(3)
@@ -100,6 +103,14 @@ struct UserDetailsView: View {
                 }
             }
         }
+        .background(
+            Image("42background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+            
+        )
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear {
             Task {
                 await loadUserInformation()
